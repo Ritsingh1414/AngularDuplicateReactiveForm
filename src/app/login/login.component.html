@@ -1,0 +1,30 @@
+<div class="login_bg container-fluid h-100 d-flex justify-content-center bg-danger red ">
+  <div class="card card-body shadow p-5">
+    <div class="text-center mb-5">
+      <h5 class="d-block">Welcome To</h5>
+      <img src="assets/images/logo1.png" class="logo">
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && login()" novalidate>
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="Enter email" [(ngModel)]="loginData.email" name="email"
+          #email="ngModel" required>
+        <span class="text-danger" *ngIf="(email.touched || loginForm.submitted) && email.errors?.required">
+          Email is required
+        </span>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Enter Password" [(ngModel)]="loginData.password"
+          name="password" #password="ngModel" required>
+        <span class="text-danger" *ngIf="(password.touched || loginForm.submitted) && password.errors?.required">
+          Password is required
+        </span>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block round" [disabled]="!loginForm.form.valid">Login
+        Now</button>
+
+      <h6 class="d-block text-center my-4">Not yet a client? <a routerLink="/register" class="text-danger">Sign
+          up here</a></h6>
+    </form>
+  </div>
+</div>

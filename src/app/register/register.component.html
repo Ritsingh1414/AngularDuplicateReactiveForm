@@ -1,0 +1,67 @@
+<div class="login_bg container-fluid h-100 d-flex justify-content-center bg-danger red">
+  <div class="card card-body shadow p-5">
+    <div class="text-center mb-5">
+      <h5 class="d-block">Welcome To</h5>
+      <img src="assets/images/logo1.png" class="logo">
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div formArrayName="user" *ngFor="let creds of users.controls; let i = index;">
+        <ng-container [formGroupName]="i">
+          <h5>Register Form {{i+1}}</h5>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter Name" formControlName="fullName"
+              required>
+            <span class="text-danger" *ngIf="(users.controls[i].get('fullName').touched || submitted ) && users.controls[i].get('fullName').errors?.required">
+          Name is required </span>
+          <span class="text-danger" *ngIf="users.controls[i].get('fullName').touched  && users.controls[i].get('fullName').errors?.minlength">
+            Name can't be shorter than 3 letters</span>
+          </div>
+
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="Enter email" formControlName="email" required>
+            <span class="text-danger" *ngIf="(users.controls[i].get('email').touched || submitted) && users.controls[i].get('email').errors?.required">
+          Email is required </span>
+          <span class="text-danger"
+          *ngIf="users.controls[i].get('email').touched && users.controls[i].get('email').errors?.email">
+         Please input correct email.
+        </span>
+          </div>
+          <div class="form-group">
+            <input type="tel" class="form-control" placeholder="Enter Mobile" minlength="10" maxlength="10"
+              formControlName="phone" required>
+            <span class="text-danger" *ngIf="(users.controls[i].get('phone').touched || submitted) && users.controls[i].get('phone').errors?.required ">
+          Phone is required </span>
+          <span class="text-danger"
+          *ngIf="users.controls[i].get('phone').touched && users.controls[i].get('phone').errors?.minlength">
+         Phone Length should be 10.
+        </span>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Enter Password" formControlName="password"
+              required>
+            <span class="text-danger" *ngIf="(users.controls[i].get('password').touched || submitted) && users.controls[i].get('password').errors?.required">
+          Password is required
+        </span>
+        <span class="text-danger" *ngIf="users.controls[i].get('password').touched && users.controls[i].get('password').errors?.passwordStrength"> {{users.controls[i].get('password').errors['passwordStrength']}}</span>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword"
+              required>
+            <span class="text-danger" *ngIf="users.controls[i].get('confirmPassword').touched && users.controls[i].errors?.mismatch">
+          Passwords does not match.
+        </span>
+        <span class="text-danger"
+          *ngIf="(users.controls[i].get('confirmPassword').touched || submitted) && users.controls[i].get('confirmPassword').errors?.required">
+          Confirm Password is required
+        </span> 
+        <span class="text-danger" *ngIf="users.controls[i].get('confirmPassword').touched && users.controls[i].get('confirmPassword').errors?.passwordStrength"> {{users.controls[i].get('password').errors['passwordStrength']}}</span>
+          </div> 
+        </ng-container>
+      </div>
+      <h6 class="d-block text-right my-4 pointer"> <a class="text-danger" (click)="addCreds()">Add Form</a></h6>
+      <button type="submit" class="btn btn-primary btn-block round" >Register Now</button>
+    </form>
+    <h6 class="d-block text-center my-4"> <a routerLink="/login" class="text-danger">Login Now</a>
+    </h6>
+  </div>
+</div>

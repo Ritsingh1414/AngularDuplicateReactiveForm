@@ -1,0 +1,30 @@
+<div class="ml-4 "> 
+    <button  class="btn btn-primary mb-4 round float-right" (click)="logout()"  >logout</button>
+    <p> IST to GMT</p>
+    <input type="date"  placeholder="IST to GMT date" [(ngModel)]="istToGmt">
+  GMT date is {{istToGmt | date:'short':'GMT'}}
+</div>
+<div class="ml-4">
+    <p> GMT to IST</p>
+    <input type="date"  placeholder="GMT to IST date" [(ngModel)]="gmtToIst">
+IST Date is {{gmtToIst | date:'short':'IST'}}
+</div>
+
+<div class="mt-4">
+    <button  class="btn btn-primary mb-4 round" (click)="printPackage()"> Print Package.json  in Console</button>
+<div>
+<input type="file" (change)="onFileChange($event)" multiple="false" />
+<button class="btn btn-primary mt-4  round"  (click)="generatePdf()">Export as PDF!</button>
+<div class="import-export-table">
+	<table class="sjs-table">
+		<tbody>
+      <tr *ngFor="let row of data">
+			<td *ngFor="let val of row">
+				{{val}}
+			</td>
+		</tr>
+    </tbody>
+	</table>
+</div>
+</div>
+</div>

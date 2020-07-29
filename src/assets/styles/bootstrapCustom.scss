@@ -1,0 +1,60 @@
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+/********  To add more spacer in boostrap classes $spacer=1rem ***********/
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 5),
+  7: ($spacer * 6)
+);
+
+
+/********* To add new color classes in bootstrap Library ***********/
+$theme-colors: ( 
+  "primary": $primary,
+  "black":#000,
+  "gray-100": $gray-100,
+   "gray-200": $gray-200,
+   "gray-300": $gray-300,
+   "gray-400": $gray-400,
+   "gray-500": $gray-500,
+   "gray-600": $gray-600,
+   "gray-700": $gray-700,
+   "gray-800": $gray-800,
+   "primary-hfd": #00AEEF
+);
+
+/********** This is custom sizes added in bootstrap library *******/
+$sizes: () !default;
+$sizes: map-merge(
+  (
+    5: 5%,
+    10: 10%,
+    15: 15%,
+    20: 20%,
+    25: 25%,
+    30: 30%,
+    35: 35%,
+    40: 40%,
+    45: 45%,
+    50: 50%,
+    55: 55%,
+    60: 60%,
+    65: 65%,
+    70: 70%,
+    75: 75%,
+    80: 80%,
+    85: 85%,
+    90: 90%,
+    95: 95%,
+    100: 100%,
+    auto: auto
+  ),
+  $sizes
+);
+
